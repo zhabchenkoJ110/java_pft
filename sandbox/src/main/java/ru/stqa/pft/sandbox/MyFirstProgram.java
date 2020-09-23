@@ -14,15 +14,17 @@ public class MyFirstProgram {
         Rectangle r = new Rectangle(4, 6);
         System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
 
+        Point p1 = new Point(1, 1);
+        Point p2 = new Point(2, 2);
+        System.out.println("Расстоние между двумя точками c координатами (" + p1.x + ";" + p1.y + ") и (" + p2.x + ";" + p2.y + ") = " + Math.round(p1.distance(p2)*100.0)/100.0);
 
-        Point p1 = new Point(1,2,3,4);
-        System.out.println("Расстоние между двумя точками c координатами (" + p1.x1+";" + p1.y1 +") и (" + p1.x2+";" + p1.y2 +") = "   + p1.distance());
+        Point p3 = new Point(1, 2);
+        Point p4 = new Point(3, 4);
+        System.out.println("Расстоние между двумя точками c координатами (" + p3.x + ";" + p3.y + ") и (" + p4.x + ";" + p4.y + ") = " + Math.round(p3.distance(p4)*100.0)/100.0);
 
-        Point p2 = new Point(1,1,2,2);
-        System.out.println("Расстоние между двумя точками c координатами (" + p2.x1+";" + p2.y1 +") и (" + p2.x2+";" + p2.y2 +") = "   + p2.distance());
-
-        Point p3 = new Point(4,5,10,-3);
-        System.out.println("Расстоние между двумя точками c координатами (" + p3.x1+";" + p3.y1 +") и (" + p3.x2+";" + p3.y2 +") = "   + p3.distance());
+        Point p5 = new Point(4, 5);
+        Point p6 = new Point(10, -3);
+        System.out.println("Расстоние между двумя точками c координатами (" + p5.x + ";" + p5.y + ") и (" + p6.x + ";" + p6.y + ") = " + Math.round(p5.distance(p6)*100.0)/100.0);
 
     }
 
