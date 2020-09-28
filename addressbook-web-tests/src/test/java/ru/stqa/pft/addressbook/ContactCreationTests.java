@@ -4,8 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.*;
 
-import static org.testng.Assert.*;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -18,6 +16,10 @@ public class ContactCreationTests {
     public void setUp() throws Exception {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        login();
+    }
+
+    private void login() {
         wd.get("http://localhost/addressbook/");
         wd.findElement(By.xpath("//html")).click();
         wd.findElement(By.name("user")).click();
@@ -30,7 +32,16 @@ public class ContactCreationTests {
 
     @Test
     public void testContactCreation() throws Exception {
-        wd.findElement(By.linkText("add new")).click();
+        initNewContactCreation();
+        fillContactForm();
+        submitContactCreation();
+    }
+
+    private void submitContactCreation() {
+        wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    }
+
+    private void fillContactForm() {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
         wd.findElement(By.name("firstname")).sendKeys("Anastasiia");
@@ -68,15 +79,21 @@ public class ContactCreationTests {
         wd.findElement(By.name("byear")).clear();
         wd.findElement(By.name("byear")).sendKeys("1989");
         wd.findElement(By.name("theform")).click();
-        wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    }
 
+    private void initNewContactCreation() {
+        wd.findElement(By.linkText("add new")).click();
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
-        wd.findElement(By.linkText("Logout")).click();
+        logout();
         wd.quit();
 
+    }
+
+    private void logout() {
+        wd.findElement(By.linkText("Logout")).click();
     }
 
     private boolean isElementPresent(By by) {
