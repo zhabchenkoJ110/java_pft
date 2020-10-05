@@ -18,7 +18,7 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
     private ContactHelper contactHelper;
 
-    public ApplicationManager (String browser){
+    public ApplicationManager(String browser) {
         this.browser = browser;
     }
 
