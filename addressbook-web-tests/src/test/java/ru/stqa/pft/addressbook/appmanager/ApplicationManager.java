@@ -31,7 +31,7 @@ public class ApplicationManager {
             wd = new InternetExplorerDriver();
         }
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wd.get("https://localhost/addressbook/group.php");
+        wd.get("http://localhost/addressbook/group.php");
         contactHelper = new ContactHelper(wd);
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
