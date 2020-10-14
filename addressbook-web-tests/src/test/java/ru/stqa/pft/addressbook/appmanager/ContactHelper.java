@@ -47,8 +47,9 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void selectContact() {
-        click(By.name("selected[]"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+        //click(By.name("selected[]"));
     }
 
     public void deleteSelectedContacts() {
@@ -85,7 +86,8 @@ public class ContactHelper extends HelperBase {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String name = cells.get(2).getText();
             String lastname = cells.get(1).getText();
-            ContactData contact = new ContactData(name, lastname, null, null, null, null, null, null, null, null, null ,null);
+            String id = row.findElement(By.cssSelector("td.center")).findElement(By.tagName("input")).getAttribute("value");
+            ContactData contact = new ContactData(id, name, lastname, null, null, null, null, null, null, null, null, null ,null);
             contacts.add(contact);
         }
         return contacts;
