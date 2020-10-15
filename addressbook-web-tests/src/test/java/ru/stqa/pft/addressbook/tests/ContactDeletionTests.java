@@ -17,7 +17,7 @@ public class ContactDeletionTests extends TestBase {
         app.getContactHelper().returnToHomePage();
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getNavigationHelper().gotoHomePage();
-        app.getContactHelper().selectContact(before.size() - 1);
+        app.getContactHelper().selectContact();
         app.getContactHelper().deleteSelectedContacts();
         app.getContactHelper().returnToHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
