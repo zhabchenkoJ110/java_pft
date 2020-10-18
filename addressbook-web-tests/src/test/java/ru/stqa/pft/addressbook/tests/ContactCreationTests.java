@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -10,13 +11,16 @@ import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
-
-    @Test(enabled = false)
-    public void testContactCreation() throws Exception {
+    @BeforeMethod
+    public void ensurePreconditions(){
         app.goTo().groupPage();
         if (!app.group().isThereAGroup()) {
             app.group().create(new GroupData().withName("test1"));
         }
+    }
+
+    @Test
+    public void testContactCreation() throws Exception {
         app.goTo().gotoHomePage();
         List<ContactData> before = app.getContactHelper().getContactList();
         ContactData contact = new ContactData("Anastasiia", "Petrova", "testPetrova", "ooo Test", "test1", "Moscow, Tverskaya street", "+79046111111", "8495123456", "test@mail.ru", "25", "December", "1989");
