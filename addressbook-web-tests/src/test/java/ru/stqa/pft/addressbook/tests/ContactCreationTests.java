@@ -12,7 +12,7 @@ import java.util.List;
 public class ContactCreationTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions(){
+    public void ensurePreconditions() {
         app.goTo().groupPage();
         if (!app.group().isThereAGroup()) {
             app.group().create(new GroupData().withName("test1"));
