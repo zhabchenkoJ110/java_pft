@@ -19,7 +19,7 @@ public class GroupDeletionTests extends TestBase {
         }
     }
 
-    @Test (enabled = false)
+    @Test
     public void testGroupDeletion() throws Exception {
         app.goTo().groupPage();
         if (app.group().all().size() == 0) {
