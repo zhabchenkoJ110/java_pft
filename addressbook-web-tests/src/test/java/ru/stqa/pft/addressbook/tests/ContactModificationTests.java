@@ -25,9 +25,9 @@ public class ContactModificationTests extends TestBase {
         Contacts before = app.contact().all();
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData()
-                .withId(modifiedContact.getId()).withName("Anastasiia").withLastname("Petrova")
-                .withNickname("testPetrova").withCompany("ooo Test").withGroup("test1").withAddress("Moscow, Tverskaya street")
-                .withHomephone("+79046111111").withWorkphone("8495123456").withEmail("test@mail.ru")
+                .withId(modifiedContact.getId()).withName("Anastasiia").withLastname("Sidorova")
+                .withNickname("testSidorova").withCompany("ooo Test").withGroup("test1").withAddress("Moscow, Tverskaya street")
+                .withHomephone("+79046111111").withWorkphone("8495123456").withEmail("test1@mail.ru")
                 .withBday("25").withBmonth("December").withByear("1989");
         app.goTo().homePage();
         app.contact().modify(contact);
