@@ -61,7 +61,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withMobilePhone(String mobilephone) {
+    public ContactData withMobilephone(String mobilephone) {
         this.mobilephone = mobilephone;
         return this;
     }
@@ -116,7 +116,7 @@ public class ContactData {
     }
 
     public String getMobilephone() {
-        return homephone;
+        return mobilephone;
     }
 
     public String getWorkphone() {
@@ -171,5 +171,4 @@ public class ContactData {
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
-
 }

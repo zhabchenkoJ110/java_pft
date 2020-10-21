@@ -19,7 +19,7 @@ public class ContactModificationTests extends TestBase {
         }
     }
 
-    @Test
+    @Test (enabled = false)
     public void testContactModification() {
         app.contact().returnToHomePage();
         Contacts before = app.contact().all();

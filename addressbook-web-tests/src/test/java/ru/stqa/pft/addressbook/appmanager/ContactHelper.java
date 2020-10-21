@@ -73,7 +73,7 @@ public class ContactHelper extends HelperBase {
         String workphone = wd.findElement(By.name("work")).getAttribute("value");
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withName(name).withLastname(lastname)
-                .withHomephone(homephone).withMobilePhone(mobilephone).withWorkphone(workphone);
+                .withHomephone(homephone).withMobilephone(mobilephone).withWorkphone(workphone);
     }
 
     public void initContactModificationById(int id) {
@@ -125,9 +125,10 @@ public class ContactHelper extends HelperBase {
             String name = cells.get(2).getText();
             String[] phones = cells.get(5).getText().split("\n");
             contacts.add(new ContactData().withId(id).withName(name).withLastname(lastname)
-                    .withHomephone(phones[0]).withMobilePhone(phones[1]).withWorkphone(phones[2]));
+                    .withHomephone(phones[0]).withMobilephone(phones[1]).withWorkphone(phones[2]));
         }
         return contacts;
     }
 
 }
+
