@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Elena 0",
+    "lastname": "Ivanova 0",
+    "group": "test1",
+    "address": "Moscow 0",
+    "mobilephone": " +79086554889 ",
+    "email": "test@mail.ru",
+    "bday": "25",
+    "bmonth": "January",
+    "byear": "1991"
+  },
+  {
+    "name": "Elena 1",
+    "lastname": "Ivanova 1",
+    "group": "test1",
+    "address": "Moscow 1",
+    "mobilephone": " +79086554889 ",
+    "email": "test@mail.ru",
+    "bday": "25",
+    "bmonth": "January",
+    "byear": "1991"
+  },
+  {
+    "name": "Elena 2",
+    "lastname": "Ivanova 2",
+    "group": "test1",
+    "address": "Moscow 2",
+    "mobilephone": " +79086554889 ",
+    "email": "test@mail.ru",
+    "bday": "25",
+    "bmonth": "January",
+    "byear": "1991"
+  }
+]

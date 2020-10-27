@@ -1,0 +1,35 @@
+<list>
+  <contact>
+    <name>Elena 0</name>
+    <lastname>Ivanova 0</lastname>
+    <group>test1</group>
+    <address>Moscow 0</address>
+    <mobilephone> +79086554889 </mobilephone>
+    <email>test@mail.ru</email>
+    <bday>25</bday>
+    <bmonth>January</bmonth>
+    <byear>1991</byear>
+  </contact>
+  <contact>
+    <name>Elena 1</name>
+    <lastname>Ivanova 1</lastname>
+    <group>test1</group>
+    <address>Moscow 1</address>
+    <mobilephone> +79086554889 </mobilephone>
+    <email>test@mail.ru</email>
+    <bday>25</bday>
+    <bmonth>January</bmonth>
+    <byear>1991</byear>
+  </contact>
+  <contact>
+    <name>Elena 2</name>
+    <lastname>Ivanova 2</lastname>
+    <group>test1</group>
+    <address>Moscow 2</address>
+    <mobilephone> +79086554889 </mobilephone>
+    <email>test@mail.ru</email>
+    <bday>25</bday>
+    <bmonth>January</bmonth>
+    <byear>1991</byear>
+  </contact>
+</list>
