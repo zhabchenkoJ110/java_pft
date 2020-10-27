@@ -19,7 +19,7 @@ public class ContactDeletionTests extends TestBase {
         }
     }
 
-    @Test (enabled = false)
+    @Test(enabled = false)
     public void testContactDeletion() {
         app.contact().returnToHomePage();
         Contacts before = app.contact().all();
