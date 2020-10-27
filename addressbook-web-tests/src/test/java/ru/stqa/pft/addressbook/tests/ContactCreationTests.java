@@ -40,7 +40,7 @@ public class ContactCreationTests extends TestBase {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
         List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
-        return contacts.stream().map((c)->new Object[] {c}).collect(Collectors.toList()).iterator();
+        return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
     }
 
     @DataProvider
@@ -54,8 +54,9 @@ public class ContactCreationTests extends TestBase {
             line = reader.readLine();
         }
         Gson gson = new Gson();
-        List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType()); //Означает примеерно то же самое, что List<ContactData>.class
-       return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
+        List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {
+        }.getType()); //Означает примеерно то же самое, что List<ContactData>.class
+        return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
     }
 
     @BeforeMethod
