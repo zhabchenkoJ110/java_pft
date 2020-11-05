@@ -72,12 +72,12 @@ public class ContactCreationTests extends TestBase {
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData contact) throws Exception {
         app.goTo().homePage();
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         File photo = new File("src/test/resources/stru.png");
         //ContactData contact = new ContactData().withName("Anastasiia").withLastname("Petrova").withNickname("testPetrova").withPhoto(photo).withCompany("ooo Test").withGroup("test1").withAddress("Moscow, Tverskaya street").withHomephone("+79046111111").withWorkphone("8495123456").withEmail("test@mail.ru").withBday("25").withBmonth("December").withByear("1989");
         app.contact().create(contact);
         app.goTo().homePage();
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after.size(), equalTo(before.size() + 1));
 
         assertThat(after, equalTo(

@@ -14,19 +14,19 @@ public class ContactDeletionTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
         app.goTo().homePage();
-        if (app.contact().all().size() == 0) {
+        if (app.db().contacts().size() == 0) {
             app.contact().create(new ContactData().withName("Anastasiia").withLastname("Petrova").withNickname("testPetrova").withCompany("ooo Test").withGroup("test1").withAddress("Moscow, Tverskaya street").withHomephone("+79046111111").withWorkphone("8495123456").withEmail("test@mail.ru").withBday("25").withBmonth("December").withByear("1989"));
         }
     }
 
-    @Test(enabled = false)
+    @Test
     public void testContactDeletion() {
         app.contact().returnToHomePage();
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         ContactData deletedContact = before.iterator().next();
         app.goTo().homePage();
         app.contact().delete(deletedContact);
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertEquals(after.size(), before.size() - 1);
         assertThat(after, equalTo(before.without(deletedContact)));
     }
