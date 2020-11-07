@@ -1,5 +1,6 @@
 package ru.stqa.pft.mantis.appmanager;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -12,7 +13,10 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    private final String browser;
+    private final Properties properties;
+    WebDriver wd;
+
+    private String browser;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -36,7 +40,11 @@ public class ApplicationManager {
 
 
     public void stop() {
-        logout();
+        //logout();
         wd.quit();
     }
+
+//    private void logout() {
+//        wd.findElement(By.linkText("Logout")).click();
+//    }
 }
