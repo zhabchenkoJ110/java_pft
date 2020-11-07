@@ -15,18 +15,18 @@ public class ContactModificationTests extends TestBase {
     public void ensurePreconditions() {
         app.goTo().homePage();
         if (app.db().contacts().size() == 0) {
-            app.contact().create(new ContactData().withName("Anastasiia").withLastname("Petrova").withNickname("testPetrova").withCompany("ooo Test").withGroup("test1").withAddress("Moscow, Tverskaya street").withHomephone("+79046111111").withWorkphone("8495123456").withEmail("test@mail.ru").withBday("25").withBmonth("December").withByear("1989"));
+            app.contact().create(new ContactData().withName("Anastasiia").withLastname("Petrova").withNickname("testPetrova").withCompany("ooo Test").withAddress("Moscow, Tverskaya street").withHomephone("+79046111111").withWorkphone("8495123456").withEmail("test@mail.ru").withBday("25").withBmonth("December").withByear("1989"));
         }
     }
 
-    @Test
+    @Test (enabled = false)
     public void testContactModification() {
         app.contact().returnToHomePage();
         Contacts before = app.db().contacts();
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData()
                 .withId(modifiedContact.getId()).withName("Anastasiia").withLastname("Sidorova")
-                .withNickname("testSidorova").withCompany("ooo Test").withGroup("test1").withAddress("Moscow, Tverskaya street")
+                .withNickname("testSidorova").withCompany("ooo Test").withAddress("Moscow, Tverskaya street")
                 .withHomephone("+79046111111").withWorkphone("8495123456").withEmail("test1@mail.ru")
                 .withBday("25").withBmonth("December").withByear("1989");
         app.goTo().homePage();

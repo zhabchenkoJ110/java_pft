@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -71,9 +72,10 @@ public class ContactCreationTests extends TestBase {
 
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData contact) throws Exception {
+        Groups groups = app.db().groups();
+        File photo = new File("src/test/resources/stru.png");
         app.goTo().homePage();
         Contacts before = app.db().contacts();
-        File photo = new File("src/test/resources/stru.png");
         //ContactData contact = new ContactData().withName("Anastasiia").withLastname("Petrova").withNickname("testPetrova").withPhoto(photo).withCompany("ooo Test").withGroup("test1").withAddress("Moscow, Tverskaya street").withHomephone("+79046111111").withWorkphone("8495123456").withEmail("test@mail.ru").withBday("25").withBmonth("December").withByear("1989");
         app.contact().create(contact);
         app.goTo().homePage();
@@ -84,14 +86,4 @@ public class ContactCreationTests extends TestBase {
                 before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
         verifyContactListInUI();
     }
-
-//    @Test
-//    public void testCurrentDir(){
-//        File currentDir = new File(".");
-//        File photo = new File("src/test/resources/stru.png");
-//        System.out.println(currentDir.getAbsolutePath());
-//        System.out.println(photo.exists());
-//
-//    }
-
 }
