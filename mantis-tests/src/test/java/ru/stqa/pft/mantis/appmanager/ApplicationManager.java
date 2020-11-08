@@ -18,6 +18,7 @@ public class ApplicationManager {
 
     private final Properties properties;
     private RegistrationHelper registrationHelper;
+    private FtpHelper ftp;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -54,6 +55,13 @@ public class ApplicationManager {
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
+    }
+
+    public FtpHelper ftp() {
+        if (ftp == null) {
+            ftp = new FtpHelper(this);
+        }
+        return ftp;
     }
 
     //ленивая инициализация драйвера
