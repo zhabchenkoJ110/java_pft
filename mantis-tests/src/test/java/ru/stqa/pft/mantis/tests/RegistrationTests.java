@@ -23,7 +23,7 @@ public class RegistrationTests extends TestBase {
         long now = System.currentTimeMillis(); //функция возвращат текущее время от начала компьютерной эры 1 января 1970г
         String user = String.format("user%s", now);
         String password = "password";
-        String email = String.format("user%s@localhost.localdomain", now);
+        String email = String.format("user%s@localhost", now);
 
         //создание пользователя на почтовом сервере
         app.james().createUser(user, password);
@@ -33,7 +33,7 @@ public class RegistrationTests extends TestBase {
         // должно прийти письмо
         //List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000); //ждем 2 письма в течение 10000 мс
         // письмо из внешнего потового сервера
-        List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000);
+        List<MailMessage> mailMessages = app.james().waitForMail(user, password, 12000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
         app.registration().finish(confirmationLink, password);
         assertTrue(app.newSession().login(user, password));
