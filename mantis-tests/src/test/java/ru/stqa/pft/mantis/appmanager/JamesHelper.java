@@ -139,7 +139,7 @@ public class JamesHelper {
         long now = System.currentTimeMillis();
         while (System.currentTimeMillis() < now + timeout) {
             List<MailMessage> allMail = getAllMail(username, password);
-            if (allMail.size() >= 0) {
+            if (allMail.size() > 0) {
                 return allMail;
             }
             try {
