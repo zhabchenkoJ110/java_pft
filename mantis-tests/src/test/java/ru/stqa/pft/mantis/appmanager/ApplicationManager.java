@@ -96,6 +96,5 @@ public class ApplicationManager {
             jamesHelper = new JamesHelper(this);
         }
         return jamesHelper;
-
     }
 }

@@ -25,7 +25,7 @@ public class JamesHelper {
 
     public JamesHelper(ApplicationManager app) {
         this.app = app;
-        telnet = new TelnetClient();
+        telnet = new TelnetClient(); //создается telnet клиент при инициализации JamesHelper-a
         mailSession = Session.getDefaultInstance(System.getProperties());
     }
 
@@ -39,15 +39,15 @@ public class JamesHelper {
 
     public void createUser(String name, String passwd) {
         initTelnetSession();
-        write("adduser" + name + " " + passwd);
-        String result = readUntil("User" + name + "added");
+        write("adduser " + name + " " + passwd);
+        String result = readUntil("User " + name + " added");
         closeTelnetSession();
     }
 
     public void deleteUser(String name) {
         initTelnetSession();
-        write("deluser" + name);
-        String result = readUntil("User" + name + "deleted");
+        write("deluser " + name);
+        String result = readUntil("User " + name + " deleted");
         closeTelnetSession();
     }
 
@@ -59,8 +59,8 @@ public class JamesHelper {
 
         try {
             telnet.connect(mailserver, port);
-            in = telnet.getInputStream();
-            out = new PrintStream(telnet.getOutputStream());
+            in = telnet.getInputStream(); //входной поток - для того чтобы что-то читать
+            out = new PrintStream(telnet.getOutputStream() ); //выходной поток - для того чтобы что-то писать, отправлять команды
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,7 +75,7 @@ public class JamesHelper {
         readUntil("Password:");
         write(password);
 
-        readUntil("Welcome" + login + ". HELP for a list of commands");
+        readUntil("Welcome " + login + ". HELP for a list of commands");
     }
 
     private String readUntil(String pattern) {
@@ -101,7 +101,7 @@ public class JamesHelper {
 
     private void write(String value) {
         try {
-            out.print(value);
+            out.println(value);
             out.flush();
             System.out.println(value);
         } catch (Exception e) {

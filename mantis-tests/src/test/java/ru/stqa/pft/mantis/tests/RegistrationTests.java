@@ -23,10 +23,16 @@ public class RegistrationTests extends TestBase {
         long now = System.currentTimeMillis(); //функция возвращат текущее время от начала компьютерной эры 1 января 1970г
         String user = String.format("user%s", now);
         String password = "password";
-        String email = String.format("user%s@localhost", now);
+        String email = String.format("user%s@localhost.localdomain", now);
+
+        //создание пользователя на почтовом сервере
         app.james().createUser(user, password);
+        //выполняется первая часть регистрации
         app.registration().start(user, email);
+
+        // должно прийти письмо
         //List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000); //ждем 2 письма в течение 10000 мс
+        // письмо из внешнего потового сервера
         List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
         app.registration().finish(confirmationLink, password);
@@ -34,7 +40,7 @@ public class RegistrationTests extends TestBase {
     }
 
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
-        MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
+        MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findAny().get();
         VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
         return regex.getText(mailMessage.text);
     }
