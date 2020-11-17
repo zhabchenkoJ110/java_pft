@@ -36,7 +36,8 @@ public class SoapTests extends TestBase {
         Set<Project> projects = app.soap().getProjects();
         int issueId = 0000002;
         skipIfNotFixed(issueId);
-        Issue issue = new Issue();
+        Issue issue = new Issue().withSummary("Test issue")
+                .withDescription("Test issue description").withProject(projects.iterator().next());
         isIssueOpen(issueId);
         assertEquals(issue.getId(), true);
     }
