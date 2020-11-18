@@ -35,9 +35,9 @@ public class SoapTests extends TestBase {
     public void testCheckIssue() throws MalformedURLException, ServiceException, RemoteException {
         Set<Project> projects = app.soap().getProjects();
         int issueId = 0000001;
-        //skipIfNotFixed(issueId);
-        boolean status = isIssueOpen(issueId);
-        System.out.println(status);
+        skipIfNotFixed(issueId);
+//        boolean status = isIssueOpen(issueId);
+//        System.out.println(status);
     }
 }
 
