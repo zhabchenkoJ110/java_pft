@@ -3,7 +3,7 @@ package ru.stqa.pft.sandbox;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Primetests {
+public class PrimeTests {
 
     @Test
     public void testPrime() {
