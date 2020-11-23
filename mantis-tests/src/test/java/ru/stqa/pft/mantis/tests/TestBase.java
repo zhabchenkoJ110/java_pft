@@ -38,7 +38,7 @@ public class TestBase {
                 .getMantisConnectPort(new URL("http://localhost/mantisbt-2.24.2/api/soap/mantisconnect.php"));
         IssueData issueOpen = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
         issueOpen.getStatus().getName();
-        if (issueOpen.getStatus().getName() == "closed") {
+        if (issueOpen.getStatus().getName().equals("closed")) {
             return false;
         } else {
             return true;
