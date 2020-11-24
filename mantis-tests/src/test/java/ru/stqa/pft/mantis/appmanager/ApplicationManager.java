@@ -21,6 +21,8 @@ public class ApplicationManager {
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
+    private DbHelper dbHelper;
+    private UserHelper usersHelper;
     private SoapHelper soapHelper;
 
     public ApplicationManager(String browser) {
@@ -33,17 +35,11 @@ public class ApplicationManager {
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
     }
 
-
     public void stop() {
-        //logout();
         if (wd != null) {
             wd.quit();
         }
     }
-
-//    private void logout() {
-//        wd.findElement(By.linkText("Logout")).click();
-//    }
 
     public HttpSession newSession() {
         return new HttpSession(this);
@@ -104,6 +100,19 @@ public class ApplicationManager {
             soapHelper = new SoapHelper(this);
         }
         return soapHelper;
+    }
 
+    public UserHelper usersHelper() {
+        if (usersHelper == null) {
+            usersHelper = new UserHelper(this);
+        }
+        return usersHelper;
+    }
+
+    public DbHelper db() {
+        if (dbHelper == null) {
+            dbHelper = new DbHelper(this);
+        }
+        return dbHelper;
     }
 }
