@@ -27,10 +27,13 @@ public class ContactData {
     @Expose
     @Column(name = "lastname")
     private String lastname;
+
     private String nickname;
+
     private String company;
 
     @Expose
+    @Column(name = "address")
     @Type(type = "text")
     private String address;
 
@@ -283,7 +286,6 @@ public class ContactData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         ContactData that = (ContactData) o;
 
         if (id != that.id) return false;
@@ -297,6 +299,16 @@ public class ContactData {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
+    }
+
+    private Object readResolve() {
+        groups = new HashSet<GroupData>();
+        return this;
+    }
+
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
     }
 
 }

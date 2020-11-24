@@ -33,7 +33,7 @@ public class GroupData {
     @Type(type = "text")
     private String footer;
 
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
     private Set<ContactData> contacts = new HashSet<ContactData>();
 
     public int getId() {
@@ -72,7 +72,7 @@ public class GroupData {
         return this;
     }
 
-    public Contacts getContacts() {
+    public Set<ContactData> getContacts() {
         return new Contacts(contacts);
     }
 
@@ -104,5 +104,14 @@ public class GroupData {
         result = 31 * result + (header != null ? header.hashCode() : 0);
         result = 31 * result + (footer != null ? footer.hashCode() : 0);
         return result;
+    }
+
+    public boolean hasContact(ContactData contact) {
+        for (GroupData group : contact.getGroups()) {
+            if (group.getId() == this.getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

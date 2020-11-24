@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -26,6 +27,13 @@ public class ContactHelper extends HelperBase {
         type(By.name("nickname"), contactData.getNickname());
         attach(By.name("photo"), contactData.getPhoto());
         type(By.name("company"), contactData.getCompany());
+        click(By.name("bday"));
+        new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
+        click(By.name("bday"));
+        click(By.name("bmonth"));
+        new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBmonth());
+        click(By.name("bmonth"));
+        type(By.name("byear"), contactData.getByear());
 
         if (creation) {
             if (contactData.getGroups().size() > 0) {
@@ -142,5 +150,29 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
+    public void addContactToGroup(ContactData contact, GroupData group) {
+        selectContactById(contact.getId());
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+        submitContactAddingToGroup();
+        goingToListOfContactsInGroup();
+    }
+
+    private void submitContactAddingToGroup() {
+        click(By.name("add"));
+    }
+
+    private void goingToListOfContactsInGroup() {
+        click(By.xpath(".//a[contains(text(),'group page')]"));
+    }
+
+    public void removeContactFromGroup(ContactData contact, GroupData group) {
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+        selectContactById(contact.getId());
+        submitContactRemovingFromGroup();
+    }
+
+    private void submitContactRemovingFromGroup() {
+        click(By.name("remove"));
+    }
 }
 
