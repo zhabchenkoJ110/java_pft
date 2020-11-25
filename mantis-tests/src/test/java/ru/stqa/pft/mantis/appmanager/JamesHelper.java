@@ -60,7 +60,7 @@ public class JamesHelper {
         try {
             telnet.connect(mailserver, port);
             in = telnet.getInputStream(); //входной поток - для того чтобы что-то читать
-            out = new PrintStream(telnet.getOutputStream() ); //выходной поток - для того чтобы что-то писать, отправлять команды
+            out = new PrintStream(telnet.getOutputStream()); //выходной поток - для того чтобы что-то писать, отправлять команды
         } catch (Exception e) {
             e.printStackTrace();
         }

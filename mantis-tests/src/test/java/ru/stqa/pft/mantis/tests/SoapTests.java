@@ -36,8 +36,6 @@ public class SoapTests extends TestBase {
         Set<Project> projects = app.soap().getProjects();
         int issueId = 0000001;
         skipIfNotFixed(issueId);
-        //boolean status = isIssueOpen(issueId);
-        //System.out.println(status);
     }
 }
 

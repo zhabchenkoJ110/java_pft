@@ -51,6 +51,6 @@ public class SoapHelper {
         return new Issue().withId(createdIssueData.getId().intValue())
                 .withSummary(createdIssueData.getSummary()).withDescription(createdIssueData.getDescription())
                 .withProject(new Project().withId(createdIssueData.getProject().getId().intValue())
-                                          .withName(createdIssueData.getProject().getName()));
+                        .withName(createdIssueData.getProject().getName()));
     }
 }

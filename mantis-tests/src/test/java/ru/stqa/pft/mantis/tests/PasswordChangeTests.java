@@ -46,7 +46,6 @@ public class PasswordChangeTests extends TestBase {
         return regex.getText(mailMessage.text);
     }
 
-
     @AfterMethod(alwaysRun = true)
     public void stopMailServer() {
         app.mail().stop();
