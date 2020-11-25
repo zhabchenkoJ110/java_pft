@@ -62,7 +62,6 @@ public class ApplicationManager {
         sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
 
-
     public void stop() {
         logout();
         wd.quit();
