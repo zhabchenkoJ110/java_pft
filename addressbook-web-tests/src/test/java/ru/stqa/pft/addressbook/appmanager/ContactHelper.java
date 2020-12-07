@@ -153,25 +153,25 @@ public class ContactHelper extends HelperBase {
     public void addContactToGroup(ContactData contact, GroupData group) {
         selectContactById(contact.getId());
         new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
-        submitContactAddingToGroup();
-        goingToListOfContactsInGroup();
+        submitContactAddToGroup();
+        goToListOfContactsInGroup();
     }
 
-    private void submitContactAddingToGroup() {
+    private void submitContactAddToGroup() {
         click(By.name("add"));
     }
 
-    private void goingToListOfContactsInGroup() {
+    private void goToListOfContactsInGroup() {
         click(By.xpath(".//a[contains(text(),'group page')]"));
     }
 
     public void removeContactFromGroup(ContactData contact, GroupData group) {
         new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
         selectContactById(contact.getId());
-        submitContactRemovingFromGroup();
+        submitContactRemoveFromGroup();
     }
 
-    private void submitContactRemovingFromGroup() {
+    private void submitContactRemoveFromGroup() {
         click(By.name("remove"));
     }
 }
