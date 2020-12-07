@@ -16,8 +16,10 @@ public class DeleteContactFromGroupTests extends TestBase {
     public void ensurePreconditions() {
         Groups groups = app.db().groups();
         if (app.db().contacts().size() == 0) {
-            ContactData newContact = new ContactData().withName("Ivan").withLastname("Petrov")
-                    .withEmail("test@mail.ru").withAddress("Tomsk").withMobilephone("+79011654788").withWorkphone("84597889").inGroup(groups.iterator().next());
+            ContactData newContact = new ContactData()
+                    .withName("Sergey").withLastname("Petrov").withNickname("testnick")
+                    .withAddress("Moscow, Tverskaya street").withMobilephone("89046111111").withEmail("test@mail.ru")
+                    .withBday("15").withBmonth("May").withByear("1989").inGroup(groups.iterator().next());
             app.contact().create(newContact);
             app.goTo().homePage();
         }

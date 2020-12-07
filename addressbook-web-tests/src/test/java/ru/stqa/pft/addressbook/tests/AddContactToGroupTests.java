@@ -23,7 +23,6 @@ public class AddContactToGroupTests extends TestBase {
             app.group().create(new GroupData().withName("test1").withHeader("header1").withFooter("footer1"));
             app.goTo().homePage();
             Groups groups = app.db().groups();
-            Contacts contacts = app.db().contacts();
             if (app.db().contacts().size() == 0) {
                 app.goTo().addNewContactPage();
                 app.contact().create(new ContactData()
@@ -62,6 +61,5 @@ public class AddContactToGroupTests extends TestBase {
         assertThat(groupsOfContactAfter, CoreMatchers.equalTo(groupsOfContactBefore.withAdded(groupWithAddedContact)));
         Contacts after = app.db().contacts();
         assertThat(after, Matchers.equalTo(before.without(addedContact).withAdded(newContact)));
-
     }
 }
